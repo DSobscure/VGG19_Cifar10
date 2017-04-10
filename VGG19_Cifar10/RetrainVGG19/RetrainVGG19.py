@@ -44,9 +44,8 @@ def main(argv = None):
                 file.writelines(str(acc) + "\t" + str(lossSum/391) + "\n")
             lossSum = 0.
         ## trianing
-        [_, loss] = session.run([trainStep, crossEntropy],feed_dict={x: imageBatch, output: labelBatch, keepProbe: 0.5, learningRate: 0.001})
+        [_, loss] = session.run([trainStep, crossEntropy],feed_dict={x: imageBatch, output: labelBatch, keepProbe: 0.5, learningRate: 0.002})
         lossSum = lossSum + loss
-        print(loss)
         
     savePath = saver.save(session, "Models/model.ckpt")
     print("Model saved in file: %s" % savePath)
